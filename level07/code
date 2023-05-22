@@ -1,0 +1,11 @@
+int main () {
+	int  gid = getegid(); //esp+0x18
+	int uid = geteuid(); //esp+0x1c
+
+	stresgid(gid, gid, gid);
+	setresuid(uid, uid, uid);
+	char *s = NULL;
+	char *str = getenv("LOGNAME");
+	asprintf(&s, "/bin/echo %s ",str);
+	system(s);
+}
